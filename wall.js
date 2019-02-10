@@ -30,7 +30,7 @@ function drawHouse(){
 
 function setHouseSize(){
 	sideWallLength = 3000;
-	storeyHeight =  2990;
+	storeyHeight =  3000;
 }
 
 function drawRectangle(x, y, length, height, colourType){
@@ -58,8 +58,8 @@ function selectColour(type){
 
 function drawBrickWall() {
 	/*define brick size*/
-	var brickLength = 500;
-	var brickHeight = 130;
+	var brickLength = 1000;
+	var brickHeight = 300;
 	var halfLength = brickLength/2;
 	var cornerLength = halfLength*3;
 
@@ -122,8 +122,8 @@ function drawBrickWall() {
 	var roofMask = document.createElementNS(svgNS, "path");
 	
 	var path = "M" + sideWallLength + " 0" +
-				" L" + sideWallLength * 6 + " 0"+
-				" L" + sideWallLength * 6 + " " + storeyHeight + 
+				" L" + (sideWallLength * 6 + 10) + " 0"+
+				" L" + (sideWallLength * 6 + 10) + " " + storeyHeight + 
 				" L" + sideWallLength * 5 + " " + storeyHeight + 
 				" L" + sideWallLength * 4 + " 0" +
 				" L" + sideWallLength * 3 + " " + storeyHeight +
@@ -141,8 +141,9 @@ function drawKitchen(){
 	drawRectangle(0, storeyHeight, sideWallLength * 2, storeyHeight, "#dfefdf");
 				
 	//kitchen furniture
-	drawRectangle(sideWallLength * 0.07, storeyHeight * 1.7, sideWallLength * 0.4, storeyHeight * 0.3, "#fefefe");
-	drawRectangle(sideWallLength * 0.55, storeyHeight * 1.25, sideWallLength * 0.4, storeyHeight * 0.75, "url(#fridge)");
+	drawRectangle(sideWallLength * 1.07, storeyHeight * 1.75, sideWallLength * 0.25, storeyHeight * 0.25, "#fefefe");
+	drawRectangle(sideWallLength * 1.35, storeyHeight * 1.75, sideWallLength * 0.25, storeyHeight * 0.25, "#fefefe");
+	drawRectangle(sideWallLength * 1.7, storeyHeight * 1.4, sideWallLength * 0.25, storeyHeight * 0.6, "url(#fridge)");
 	
 	//draw floor
 	var numberOfTiles = 7;
@@ -150,7 +151,7 @@ function drawKitchen(){
 	
 	var yPosition = storeyHeight * 2;
 	for (var y=0; y < numberOfTiles; y++) {
-		var xPosition = 0;
+		var xPosition = sideWallLength;
 	
 		//first side
 		for (var x = 0; x < numberOfTiles; x++){
@@ -167,10 +168,12 @@ function drawLounge(){
 	drawRectangle(sideWallLength * 6, storeyHeight, sideWallLength * 2, storeyHeight, "#FFE4E1");
 	
 	//lounge furniture
-	
+	drawRectangle(sideWallLength * 6.2, storeyHeight * 1.4, sideWallLength * 0.6, storeyHeight * 0.4, "#111111");
+	drawRectangle(sideWallLength * 6.23, storeyHeight * 1.43, sideWallLength * 0.54, storeyHeight * 0.19, "#99CCFF");
+	drawRectangle(sideWallLength * 6.23, storeyHeight * 1.61, sideWallLength * 0.54, storeyHeight * 0.16, "#25BD04");
 	
 	//draw floor
-
+	drawRectangle(sideWallLength * 6, storeyHeight*2, sideWallLength , storeyHeight, "#AF0401");
 }
 
 function drawBedroom(){
