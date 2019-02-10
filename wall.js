@@ -13,9 +13,7 @@ function drawHouse(){
 	
 	//draw external wall
 	drawBrickWall();
-	//add windows and door;
-	drawWindows();
-
+	
 	//draw left room
 	drawKitchen();
 	
@@ -25,6 +23,9 @@ function drawHouse(){
 	//draw bedroom
 	drawBedroom();
 	
+	//add windows and door;
+	drawWindows();
+
 	//draw roof inc ceiling
 
 }
@@ -53,6 +54,8 @@ function selectColour(type){
 			return "hsl("+(0+Math.round(Math.random()*20))+", "+(40-10+Math.round(Math.random()*20))+"%, "+(40-10+Math.round(Math.random()*5))+"%)";
 		case "KitchenTile":
 			return "hsl("+(70+Math.round(Math.random()*10))+", "+(40-10+Math.round(Math.random()*20))+"%, "+(30-10+Math.round(Math.random()*5))+"%)";
+		case "Frame":
+			return "#180D01";
 		default:
 			return type;
 	}
@@ -148,7 +151,7 @@ function drawKitchen(){
 	//kitchen furniture
 	drawRectangle(sideWallLength * 1.07, storeyHeight * 1.75, sideWallLength * 0.25, storeyHeight * 0.25, "#fefefe");
 	drawRectangle(sideWallLength * 1.35, storeyHeight * 1.75, sideWallLength * 0.25, storeyHeight * 0.25, "#fefefe");
-	drawRectangle(sideWallLength * 1.7, storeyHeight * 1.4, sideWallLength * 0.25, storeyHeight * 0.6, "url(#fridge)");
+	drawRectangle(sideWallLength * 1.65, storeyHeight * 1.4, sideWallLength * 0.3, storeyHeight * 0.6, "url(#fridge)");
 	
 	//draw floor
 	var numberOfTiles = 7;
@@ -173,9 +176,9 @@ function drawLounge(){
 	drawRectangle(sideWallLength * 6, storeyHeight, sideWallLength * 2, storeyHeight, "#FFE4E1");
 	
 	//lounge furniture
-	drawRectangle(sideWallLength * 6.2, storeyHeight * 1.4, sideWallLength * 0.6, storeyHeight * 0.4, "#111111");
-	drawRectangle(sideWallLength * 6.23, storeyHeight * 1.43, sideWallLength * 0.54, storeyHeight * 0.19, "#99CCFF");
-	drawRectangle(sideWallLength * 6.23, storeyHeight * 1.61, sideWallLength * 0.54, storeyHeight * 0.16, "#25BD04");
+	drawRectangle(sideWallLength * 6.2, storeyHeight * 1.3, sideWallLength * 0.6, storeyHeight * 0.4, "#111111");
+	drawRectangle(sideWallLength * 6.23, storeyHeight * 1.33, sideWallLength * 0.54, storeyHeight * 0.19, "#99CCFF");
+	drawRectangle(sideWallLength * 6.23, storeyHeight * 1.51, sideWallLength * 0.54, storeyHeight * 0.16, "#25BD04");
 	
 	//draw floor
 	drawRectangle(sideWallLength * 6, storeyHeight*2, sideWallLength , storeyHeight, "#AF0401");
@@ -198,4 +201,37 @@ function drawBedroom(){
 	//draw floor
 }
 
-function drawWindows(){}
+function drawWindows(){
+	//outside window	
+	drawRectangle(sideWallLength * 3.22, storeyHeight * 1.22, sideWallLength * 0.56, storeyHeight * 0.46, "Frame");
+	drawRectangle(sideWallLength * 3.26, storeyHeight * 1.26, sideWallLength * 0.48, storeyHeight * 0.38, "url(#glass)");
+	//inside window
+	drawRectangle(sideWallLength * 0.22, storeyHeight * 1.22, sideWallLength * 0.56, storeyHeight * 0.46, "Frame");
+	drawRectangle(sideWallLength * 0.26, storeyHeight * 1.26, sideWallLength * 0.48, storeyHeight * 0.38, "url(#glass)");
+	drawRectangle(sideWallLength * 0.2, storeyHeight * 1.21, sideWallLength * 0.15, storeyHeight * 0.56, "#2C5E26");
+	drawRectangle(sideWallLength * 0.7, storeyHeight * 1.21, sideWallLength * 0.15, storeyHeight * 0.56, "#2C5E26");
+
+	//outside door
+	drawRectangle(sideWallLength * 4.27, storeyHeight * 1.2, sideWallLength * 0.4, storeyHeight * 0.8, "Frame");
+	drawRectangle(sideWallLength * 4.31, storeyHeight * 1.24, sideWallLength * 0.32, storeyHeight * 0.76, "#301A02");
+	drawRectangle(sideWallLength * 4.32, storeyHeight * 1.62, sideWallLength * 0.06, storeyHeight * 0.02, "url(#fridge)");
+
+	//inner door
+	drawRectangle(sideWallLength * 7.33, storeyHeight * 1.2, sideWallLength * 0.4, storeyHeight * 0.8, "Frame");
+	drawRectangle(sideWallLength * 7.37, storeyHeight * 1.24, sideWallLength * 0.32, storeyHeight * 0.76, "#301A02");
+	drawRectangle(sideWallLength * 7.64, storeyHeight * 1.62, sideWallLength * 0.06, storeyHeight * 0.02, "url(#fridge)");
+	
+	//bedroom inner
+	var innerRoofWindow = document.createElementNS(svgNS, "path");
+	
+	var path = "M" + sideWallLength * 7.8 + " " + storeyHeight * 0.7 + " " +
+				"C " + sideWallLength * 7.7 + " 0, " +
+				sideWallLength * 8.3 + " 0, " +
+				sideWallLength * 8.2 +" " + storeyHeight * 0.7	
+			
+	innerRoofWindow.setAttributeNS(null, "d", path);
+	innerRoofWindow.setAttributeNS(null, "fill", "Frame");
+	house.appendChild(innerRoofWindow);
+	
+	var innerRoofWindow = document.createElementNS(svgNS, "path");
+}
