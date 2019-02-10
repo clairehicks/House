@@ -1,3 +1,4 @@
+var svgNS = "http://www.w3.org/2000/svg";
 var house;
 var storeyHeight;
 var sideWallLength;
@@ -46,6 +47,7 @@ function drawRectangle(x, y, length, height, colourType){
 }
 
 function selectColour(type){
+	//textured colours based on code by BCMM
 	switch (type){
 		case "RedBrick":
 			return "hsl("+(0+Math.round(Math.random()*20))+", "+(40-10+Math.round(Math.random()*20))+"%, "+(40-10+Math.round(Math.random()*5))+"%)";
@@ -133,6 +135,9 @@ function drawBrickWall() {
 	roofMask.setAttributeNS(null, "d", path);
 	roofMask.setAttributeNS(null, "fill", "#fff");
 	house.appendChild(roofMask);
+	
+	//draw floor
+	drawRectangle(sideWallLength * 3, storeyHeight * 2, sideWallLength * 2, storeyHeight, "#bcb2ac");
 }
 
 function drawKitchen(){
